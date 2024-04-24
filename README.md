@@ -1,2 +1,2 @@
 # nextjs-demo
-Sample Next JS applicaation
+Sample Next JS
