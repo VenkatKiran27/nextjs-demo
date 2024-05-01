@@ -3,8 +3,44 @@ import NavLinks from '@/app/[lang]/ui/dashboard/nav-links';
 import AcmeLogo from '@/app/[lang]/ui/acme-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { signOut } from '@/auth';
+import {
+  UserGroupIcon,
+  HomeIcon,
+  DocumentDuplicateIcon,
+} from '@heroicons/react/24/outline';
 
-export default function SideNav() {
+import { getDictionary } from '../../../../get-dictionary';
+import Counter from '@/app/[lang]/counter';
+import LocaleSwitcher from '@/app/[lang]/locale-switcher';
+import { Locale } from '../../../../i18n-config';
+// import {useTranslations} from 'next-intl';
+
+export default async function SideNav({
+  params: { lang },
+}: {
+  params: { lang: Locale };
+}) {
+  const dictionary = await getDictionary(lang);
+  // const t = useTranslations('UserProfile');
+
+  const links = [
+    {
+      name: `${dictionary['dashboard'].home}`,
+      href: `/dashboard`,
+      // icon: HomeIcon
+    },
+    {
+      name: `${dictionary['dashboard'].invoices}`,
+      href: `/dashboard/invoices`,
+      // icon: DocumentDuplicateIcon,
+    },
+    {
+      name: `${dictionary['dashboard'].customers}`,
+      href: `/dashboard/customers`,
+      // icon: UserGroupIcon
+    },
+  ];
+
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
       <Link
@@ -16,7 +52,16 @@ export default function SideNav() {
         </div>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
-        <NavLinks />
+        <NavLinks navLinks={{links}} />
+        <div>
+          <LocaleSwitcher />
+          {/* <p>Current locale: {lang}</p>
+        <p>
+          This text is rendered on the server:{' '}
+          {dictionary['server-component'].welcome}
+        </p> */}
+          {/* <Counter dictionary={dictionary.counter} /> */}
+        </div>
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
         <form
           action={async () => {

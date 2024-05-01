@@ -5,5 +5,11 @@
   "counter": {
     "increment": "Increment",
     "decrement": "Decrement"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "invoices": "Invoices",
+    "customers": "Customers"
   }
 }

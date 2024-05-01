@@ -5,5 +5,11 @@
   "counter": {
     "increment": "Přidat",
     "decrement": "Ubrat"
+  },
+  "dashboard": {
+    "dashboard": "Dashboard CS",
+    "home": "Home CS",
+    "invoices": "Invoices CS",
+    "customers": "Customers CS"
   }
 }
